@@ -1,4 +1,5 @@
-
+<?php session_start();
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,7 +14,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="style.css" rel='stylesheet' type='text/css' />
 <link href='//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <!----font-Awesome----->
 <link href="css/font-awesome.css" rel="stylesheet"> 
@@ -45,8 +46,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a href="location.html">Jobs by Company</a></li>
 						</ul>
 					</li>
-					<li><a href="login.html">Login</a></li>
-					<li><a href="register.html">Sign UP</a></li>
+					<li><a href="login.php">Login</a></li>
+					<li><a href="register.php">Sign UP</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
