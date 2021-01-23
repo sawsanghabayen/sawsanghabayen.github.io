@@ -1,4 +1,9 @@
-
+<?php
+	session_start();
+	if(!ISSET($_SESSION['ee_id'])){
+		header('location:login.php');
+	}
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -30,12 +35,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 	        </button>
-	        <a class="navbar-brand" href="index.html"><h3 class="hhh">Job Ring</h3></a>
+	        <a class="navbar-brand" href="index.php"><h3 class="hhh">Job Ring</h3></a>
 	    </div>
 	    <!--/.navbar-header-->
 	    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
-	        <ul class="nav navbar-nav">
-		        <li class="dropdown">
+		<ul class="nav navbar-nav">
+					<?php
+
+			
+					require'config.php';
+					$query = mysqli_query($conn, "SELECT * FROM `employees` WHERE `ee_id`='$_SESSION[ee_id]'") or die("failed");
+					$fetch = mysqli_fetch_array($query);
+	
+					echo "<a href='#'>". $fetch['ee_fnm']." " .$fetch['ee_lnm']."</a>";
+	
+	
+				//echo "class='dropdown-toggle'". $fetch['ee_fnm']." " .$fetch['ee_lnm'];
+	 
+					//echo $_SESSION['ee_fnm']." ".$_SESSION['ee_lnm'];
+				?>
+					<li class="dropdown">
+
+				
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jobs<b class="caret"></b></a>
 		            <ul class="dropdown-menu">
 			            <li><a href="location.html">Contract Jobs</a></li>
@@ -46,8 +67,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            <li><a href="location.html">Jobs by Company</a></li>
 		            </ul>
 		        </li>
-				<li><a href="login.html">Login</a></li>
-		        <li><a href="register.html">Sign UP</a></li>
+				<li><a href="login.php">Login</a></li>
+		        <li><a href="registers.php">Sign UP</a></li>
+		        <li><a href="logout.php">Logout</a></li>
 	        </ul>
 	    </div>
 	    <div class="clearfix"> </div>
@@ -146,10 +168,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	   <div class="col-md-8">
 	      <div class="col_1">
    	        <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a1.jpg" class="img-responsive" alt=""/></a>
+				<a href="single.php"><img src="images/a1.jpg" class="img-responsive" alt=""/></a>
 			</div>
 			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">It is a long established fact</a></h4>
+				<h4><a href="single.php">It is a long established fact</a></h4>
 				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
 				<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
 				<div class="social">	
@@ -161,9 +183,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fa fa-twitter tw"></i>
 						<span class="share1">Tweet</span>								
 					</a>
-					<a class="btn_1" href="#">
+					<a class="btn_1" href="login.html">
 						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
+						<span class="share1 google">Apply To Job</span>
 					</a>
 			   </div>
 			</div>
@@ -171,10 +193,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   </div>
 		   <div class="col_1">
    	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a2.jpg" class="img-responsive" alt=""/></a>
+				<a href="single.php"><img src="images/a2.jpg" class="img-responsive" alt=""/></a>
 			</div>
 			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">Lorem Ipsum is simply dummy</a></h4>
+				<h4><a href="single.php">Lorem Ipsum is simply dummy</a></h4>
 				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
 				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
 				<div class="social">	
@@ -186,9 +208,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fa fa-twitter tw"></i>
 						<span class="share1">Tweet</span>								
 					</a>
-					<a class="btn_1" href="#">
+					<a class="btn_1" href="login.html">
 						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
+						<span class="share1 google">Apply To Job</span>
 					</a>
 			   </div>
 			</div>
@@ -196,10 +218,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   </div>
 		   <div class="col_1">
    	        <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a3.jpg" class="img-responsive" alt=""/></a>
+				<a href="single.php"><img src="images/a3.jpg" class="img-responsive" alt=""/></a>
 			</div>
 			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">There are many variations</a></h4>
+				<h4><a href="single.php">There are many variations</a></h4>
 				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
 				<p>YBut I must explain to you how all this mistaken idea of denouncing pleasure.</p>
 				<div class="social">	
@@ -211,9 +233,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fa fa-twitter tw"></i>
 						<span class="share1">Tweet</span>								
 					</a>
-					<a class="btn_1" href="#">
+					<a class="btn_1" href="login.html">
 						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
+						<span class="share1 google">Apply To Job</span>
 					</a>
 			   </div>
 			</div>
@@ -221,10 +243,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   </div>
 		   <div class="col_1">
    	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/image3.jpg" class="img-responsive" alt=""/></a>
+				<a href="single.php"><img src="images/image3.jpg" class="img-responsive" alt=""/></a>
 			</div>
 			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">Contrary to popular belief</a></h4>
+				<h4><a href="single.php">Contrary to popular belief</a></h4>
 				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
 				<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
 				<div class="social">	
@@ -236,9 +258,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fa fa-twitter tw"></i>
 						<span class="share1">Tweet</span>								
 					</a>
-					<a class="btn_1" href="#">
+					<a class="btn_1" href="login.html">
 						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
+						<span class="share1 google">Apply To Job</span>
 					</a>
 			   </div>
 			</div>
@@ -246,10 +268,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   </div>
 		   <div class="col_1">
    	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/image1.jpg" class="img-responsive" alt=""/></a>
+				<a href="single.php"><img src="images/image1.jpg" class="img-responsive" alt=""/></a>
 			</div>
 			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">At vero eos et accusamus</a></h4>
+				<h4><a href="single.php">At vero eos et accusamus</a></h4>
 				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
 				<p>On the other hand, we denounce with righteous indignation and dislike men.</p>
 				<div class="social">	
@@ -261,9 +283,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fa fa-twitter tw"></i>
 						<span class="share1">Tweet</span>								
 					</a>
-					<a class="btn_1" href="#">
+					<a class="btn_1" href="login.html">
 						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
+						<span class="share1 google">Apply To Job</span>
 					</a>
 			   </div>
 			</div>
@@ -271,7 +293,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   </div>
 		   <div class="col_2">
    	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/image2.jpg" class="img-responsive" alt=""/></a>
+				<a href="single.php"><img src="images/image2.jpg" class="img-responsive" alt=""/></a>
 			</div>
 			<div class="col-sm-8 row_1">
 				<h4><a href="single.html">On the other hand</a></h4>
@@ -286,9 +308,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fa fa-twitter tw"></i>
 						<span class="share1">Tweet</span>								
 					</a>
-					<a class="btn_1" href="#">
+					<a class="btn_1" href="login.html">
 						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
+						<span class="share1 google">Apply To Job</span>
 					</a>
 			   </div>
 			  </div>
